@@ -125,11 +125,16 @@ while ejecuccion:
                 oopcion_movstock = " "
 
         herramienta_buscada = input("\n> Ahora ingrese el nombre de la herramienta: ")
-
+        salir = False
         while not(herramienta_buscada.title() in herramientas):
             print(f"ERROR: No se ha encontrado {herramienta_buscada} en el inventario")
-            herramienta_buscada = input("> Ingrese el nombre de la herramienta: ")
+            herramienta_buscada = input("> Ingrese el nombre de la herramienta (Salir para volver al menu): ")
 
+            if herramienta_buscada.title() == "Salir":
+                salir = True
+                break
+        if salir:
+            continue
         herramienta_buscada = herramienta_buscada.title()
         indice_ext = herramientas.index(herramienta_buscada)
 
@@ -190,9 +195,15 @@ while ejecuccion:
         saldo = 0
         herramienta_buscada = input("> Ingrese el nombre de la herramienta: ")
 
+        salir = False
         while not(herramienta_buscada.title() in herramientas):
             print(f"ERROR: No se ha encontrado {herramienta_buscada} en el inventario")
-            herramienta_buscada = input("> Ingrese el nombre de la herramienta: ")
+            herramienta_buscada = input("> Ingrese el nombre de la herramienta (Salir para volver al menu): ")
+            if herramienta_buscada.title() == "Salir":
+                salir = True
+                break
+        if salir:
+            continue
 
         herramienta_buscada = herramienta_buscada.title()
         indice_ext = herramientas.index(herramienta_buscada)
