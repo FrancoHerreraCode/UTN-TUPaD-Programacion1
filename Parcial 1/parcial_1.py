@@ -32,20 +32,20 @@ while ejecuccion:
         for n in range(numero_inicial):
             nombre_herramienta = input(f">> Ahora ingrese el nombre de la herramienta N° {n+1} que desea cargar: ")
             while (nombre_herramienta.title() in herramientas) or (nombre_herramienta.isdigit()) or (nombre_herramienta == "") or (nombre_herramienta.isspace()):
+                print()
                 if nombre_herramienta.title() in herramientas:
                     print("ERROR! La herramienta ingresada ya se encuentra cargada!")
                 elif nombre_herramienta.isdigit():
                     print("ERROR! Ingreso números. Debe ingresar el nombre de la herramienta")
                 else:
                     print("ERROR! No puede ingresar espacios en blanco")
-                print()
                 nombre_herramienta = input(f">> Ingrese el nombre de la herramienta N° {n+1} que desea cargar: ")
 
             nombre_herramienta = nombre_herramienta.title()
 
             cantidad_herramienta = input(f">> Ahora ingrese la cantidad inicial de la herramienta {nombre_herramienta}: ")
             while not(cantidad_herramienta.isdigit()):
-                print("ERROR: El valor ingresado no es valido!")
+                print("\nERROR: El valor ingresado no es valido!")
                 cantidad_herramienta = input(f" > Indique la cantidad inicial de la herramienta {nombre_herramienta}: ")
             print()
             cantidad_herramienta = int(cantidad_herramienta)
@@ -58,17 +58,16 @@ while ejecuccion:
         print()
     
     # Se muestra el menu
-    print("SITEMA DE INVENTARIO".center(120, "-"))
-    print("Menu principal".center(120, "."))
-    print("Opciones:")
+    print("SISTEMA DE CONTROL DE INVENTARIO".center(120, "-"))
+    print("\nMENÚ PRINCIPAL:")
     for i, p in enumerate(menu_principal):
         print(f" {i+1}) {p}.")
     
-    opcion_elegida = input("\n>> Indique la copción elegida: ")
+    opcion_elegida = input("\n>> Indique la opción elegida: ")
 
     while True:
         while not(opcion_elegida.isdigit()):
-            print("ERROR: El valor ingresado no es valido!")
+            print("\nERROR: El valor ingresado no es valido!")
             opcion_elegida = input(">> Indique la copción elegida: ")
         
         if int(opcion_elegida) in range(1, len(menu_principal)+1):
@@ -76,6 +75,7 @@ while ejecuccion:
             break
         else:
             opcion_elegida = " "
+    print()
 
     # Estructura condicional principal
     if opcion_elegida == 1:
@@ -102,7 +102,7 @@ while ejecuccion:
         herramientas.append(nombre_herramienta)
         existencias.append(cantidad_herramienta)
         movimientos.append([0, cantidad_herramienta])
-        input(f"Se cargo {cantidad_herramienta} unidades de {nombre_herramienta} con éxito! \nPresione una tecla para continuar...")
+        input(f"Se cargo {cantidad_herramienta} unidades de {nombre_herramienta.lower()} con éxito! \nPresione una tecla para continuar...")
         print()
 
     elif opcion_elegida == 2:
@@ -138,7 +138,7 @@ while ejecuccion:
         herramienta_buscada = herramienta_buscada.title()
         indice_ext = herramientas.index(herramienta_buscada)
 
-        print(f"Recordatorio: hay {existencias[indice_ext]} unidades de {herramienta_buscada}\n")
+        print(f"\nRecordatorio: hay {existencias[indice_ext]} unidades de {herramienta_buscada}")
 
         if opcion_movstock == 1 and existencias[indice_ext] == 0:
             print(f"No hay stock disponible de {herramienta_buscada}!")
@@ -151,6 +151,7 @@ while ejecuccion:
             cantidad_herramienta_add = input(f" > Indique la cantidad de {herramienta_buscada}: ")
         cantidad_herramienta_add = int(cantidad_herramienta_add)
 
+        print()
         if opcion_movstock == 1 and existencias[indice_ext] < cantidad_herramienta_add:
             print(f"Usted quiere resta {cantidad_herramienta_add} unidades de {herramienta_buscada}, pero solo hay {existencias[indice_ext]}!")
             print(f"Si continua con esta accion, se restan solo {existencias[indice_ext]} unidades a las existencias de {herramienta_buscada}")
@@ -178,7 +179,7 @@ while ejecuccion:
 
     elif opcion_elegida == 3:
         print("Detalle del inventario actual".center(120, "."))
-        aj = 20
+        aj = 30
         print("Nombre".center(aj, " ") , end= " ")
         print("Cantidad".center(aj, " "))
         print("-------------".center(aj, " ") , end= " ")
@@ -188,19 +189,22 @@ while ejecuccion:
             print(str(existencias[i]).center(aj, " "))
         print()
         input("Presione una tecla para continuar...")
+        print()
 
     elif opcion_elegida == 4:
-        print("Consulta indivudla de stock".center(120, "."))
-        aj = 20
+        print("Consulta individual de stock".center(120, "."))
+        aj = 30
         saldo = 0
         herramienta_buscada = input("> Ingrese el nombre de la herramienta: ")
 
         salir = False
         while not(herramienta_buscada.title() in herramientas):
-            print(f"ERROR: No se ha encontrado {herramienta_buscada} en el inventario")
+            print(f"\nERROR: No se ha encontrado {herramienta_buscada} en el inventario")
             herramienta_buscada = input("> Ingrese el nombre de la herramienta (Salir para volver al menu): ")
             if herramienta_buscada.title() == "Salir":
                 salir = True
+                input("Sera redigirido al menú princiapl. Presione cualquier tecla para continuar...")
+                print()
                 break
         if salir:
             continue
@@ -237,11 +241,13 @@ while ejecuccion:
                 print(str(saldo).center(aj, " "))
         print()
         input("Presione una tecla para continuar...")
+        print()
 
 
     elif opcion_elegida == 5:
         print("Detalle del herramientas SIN stock".center(120, "."))
-        aj = 20
+        aj = 30
+        hay_vacios = False
         print("Nombre".center(aj, " ") , end= " ")
         print("Cantidad".center(aj, " "))
         print("-------------".center(aj, " ") , end= " ")
@@ -250,6 +256,9 @@ while ejecuccion:
             if existencias[i] == 0:
                 print(str(h).center(aj, " "), end= " ")
                 print(str(existencias[i]).center(aj, " "))
+                hay_vacios = True
+        if not(hay_vacios):
+            print("No constan".center(aj, " "))
         print()
 
     else:
