@@ -17,16 +17,16 @@ menu_principal = [
 while ejecuccion:
     if primera_pasada:
         # Carga inicial de herramientas como pide la consigna
-        print("SITEMA DE INVENTARIO".center(120, "."))
+        print("SISTEMA DE CONTROL DE INVENTARIO".center(120, "."))
         print("CARGA INICIAL DE STOCK")
         print("  Antes de comenzar con el sistema, deberá realizar una carga inicial del inventario de herramientas.")
         print("  Posteriormente podra cargar nuevas herramientas, o bien modificar el stock de aquellas cargas en este punto.")
         numero_inicial = input("\n> Indique la cantidad de herramientas a cargar (0 para omitir): ")
 
         while not(numero_inicial.isdigit()):
-            print("ERROR: El valor ingresado no es valido!")
+            print("\nERROR: El valor ingresado no es valido!")
             numero_inicial = input(" > Indique la cantidad de herramientas a cargar: ")
-
+        print()
         numero_inicial = int(numero_inicial)
 
         for n in range(numero_inicial):
