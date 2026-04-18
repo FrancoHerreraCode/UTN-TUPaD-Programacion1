@@ -122,7 +122,7 @@ while ejecuccion:
                 opcion_movstock = int(opcion_movstock)
                 break
             else:
-                oopcion_movstock = " "
+                opcion_movstock = " "
 
         herramienta_buscada = input("\n> Ahora ingrese el nombre de la herramienta: ")
         salir = False
