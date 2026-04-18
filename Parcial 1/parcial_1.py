@@ -203,7 +203,7 @@ while ejecuccion:
             herramienta_buscada = input("> Ingrese el nombre de la herramienta (Salir para volver al menú): ")
             if herramienta_buscada.title() == "Salir":
                 salir = True
-                input("Sera redigirido al menú princiapl. Presione cualquier tecla para continuar...")
+                input("Sera redigirido al menú principal. Presione cualquier tecla para continuar...")
                 print()
                 break
         if salir:
