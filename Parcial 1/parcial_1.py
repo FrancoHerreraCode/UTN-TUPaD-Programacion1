@@ -3,7 +3,7 @@ ejecuccion = True
 primera_pasada = True
 herramientas = []
 existencias = []
-movimientos = []
+
 menu_principal = [
     "Cargar una nueva herramienta",
     "Cargar movimiento de inventario",
@@ -51,7 +51,7 @@ while ejecuccion:
             cantidad_herramienta = int(cantidad_herramienta)
             herramientas.append(nombre_herramienta)
             existencias.append(cantidad_herramienta)
-            movimientos.append([cantidad_herramienta])
+            
 
         primera_pasada = False
         input("La carga inicial ha finalizado con éxito! Presione una tecla para continuar...")
@@ -101,7 +101,7 @@ while ejecuccion:
         cantidad_herramienta = int(cantidad_herramienta)
         herramientas.append(nombre_herramienta)
         existencias.append(cantidad_herramienta)
-        movimientos.append([0, cantidad_herramienta])
+        
         input(f"Se cargo {cantidad_herramienta} unidades de {nombre_herramienta.lower()} con éxito! \nPresione una tecla para continuar...")
         print()
 
@@ -169,11 +169,11 @@ while ejecuccion:
         
         if opcion_movstock == 1:
             existencias[indice_ext] -= cantidad_herramienta_add
-            movimientos[indice_ext].append(-1*cantidad_herramienta_add)
+            
             print(f"Se han dismunido {cantidad_herramienta_add} unidades a {herramienta_buscada}. Su stock ahora es {existencias[indice_ext]}")
         else:
             existencias[indice_ext] += cantidad_herramienta_add
-            movimientos[indice_ext].append(cantidad_herramienta_add)
+            
             print(f"Se han agregado {cantidad_herramienta_add} unidades a {herramienta_buscada}. Su stock ahora es {existencias[indice_ext]}")
         input("Presione una tecla para continuar...")
 
@@ -217,29 +217,6 @@ while ejecuccion:
         print(f"  Unidades en stock: {existencias[indice_ext]}")
         print()
 
-        print("\nDetalle de los movimientos:")
-
-        print("Nombre".center(aj, " "), end= " ")
-        print("Cantidad".center(aj, " "), end= " ")
-        print("Saldo".center(aj, " "))
-        print("-------------".center(aj, " ") , end= " ")
-        print("-------------".center(aj, " ") , end= " ")
-        print("-------------".center(aj, " "))
-        for i, m in enumerate(movimientos[indice_ext]):
-            saldo += m
-            if i == 0:
-                print("Stock inicial".center(aj, " "), end=" ")
-                print(str(m).center(aj, " "), end=" ")
-                print(str(saldo).center(aj, " "))
-            elif m > 0:
-                print("Compra".center(aj, " "), end=" ")
-                print(str(m).center(aj, " "), end=" ")
-                print(str(saldo).center(aj, " "))
-            else:
-                print("Venta".center(aj, " "), end=" ")
-                print(str(m).center(aj, " "), end=" ")
-                print(str(saldo).center(aj, " "))
-        print()
         input("Presione una tecla para continuar...")
         print()
 
