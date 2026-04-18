@@ -255,4 +255,4 @@ while ejecuccion:
     else:
         print("\nMuchas gracias por usar mi app!")
         input("Presione una tecla para continuar...")
-        break
+        ejecuccion = False
