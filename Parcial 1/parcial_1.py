@@ -6,9 +6,9 @@ existencias = []
 movimientos = []
 menu_principal = [
     "Cargar una nueva herramienta",
-    "Cargar movimiento de invetario",
+    "Cargar movimiento de inventario",
     "Ver inventario completo",
-    "Consulta invididual",
+    "Consulta individual",
     "Reportes de productos sin stock",
     "Salir"
 ]
@@ -20,11 +20,11 @@ while ejecuccion:
         print("SISTEMA DE CONTROL DE INVENTARIO".center(120, "."))
         print("CARGA INICIAL DE STOCK")
         print("  Antes de comenzar con el sistema, deberá realizar una carga inicial del inventario de herramientas.")
-        print("  Posteriormente podra cargar nuevas herramientas, o bien modificar el stock de aquellas cargas en este punto.")
+        print("  Posteriormente podrá cargar nuevas herramientas, o bien modificar el stock de aquellas cargas en este punto.")
         numero_inicial = input("\n> Indique la cantidad de herramientas a cargar (0 para omitir): ")
 
         while not(numero_inicial.isdigit()):
-            print("\nERROR: El valor ingresado no es valido!")
+            print("\nERROR: El valor ingresado no es válido!")
             numero_inicial = input(" > Indique la cantidad de herramientas a cargar: ")
         print()
         numero_inicial = int(numero_inicial)
@@ -45,7 +45,7 @@ while ejecuccion:
 
             cantidad_herramienta = input(f">> Ahora ingrese la cantidad inicial de la herramienta {nombre_herramienta}: ")
             while not(cantidad_herramienta.isdigit()):
-                print("\nERROR: El valor ingresado no es valido!")
+                print("\nERROR: El valor ingresado no es válido!")
                 cantidad_herramienta = input(f" > Indique la cantidad inicial de la herramienta {nombre_herramienta}: ")
             print()
             cantidad_herramienta = int(cantidad_herramienta)
@@ -57,7 +57,7 @@ while ejecuccion:
         input("La carga inicial ha finalizado con éxito! Presione una tecla para continuar...")
         print()
     
-    # Se muestra el menu
+    # Se muestra el menú
     print("SISTEMA DE CONTROL DE INVENTARIO".center(120, "-"))
     print("\nMENÚ PRINCIPAL:")
     for i, p in enumerate(menu_principal):
@@ -67,7 +67,7 @@ while ejecuccion:
 
     while True:
         while not(opcion_elegida.isdigit()):
-            print("\nERROR: El valor ingresado no es valido!")
+            print("\nERROR: El valor ingresado no es válido!")
             opcion_elegida = input(">> Indique la copción elegida: ")
         
         if int(opcion_elegida) in range(1, len(menu_principal)+1):
@@ -95,7 +95,7 @@ while ejecuccion:
         
         cantidad_herramienta = input(f">> Ahora ingrese la cantidad inicial de la herramienta {nombre_herramienta}: ")
         while not(cantidad_herramienta.isdigit()):
-            print("ERROR: El valor ingresado no es valido!")
+            print("ERROR: El valor ingresado no es válido!")
             cantidad_herramienta = input(f" > Indique la cantidad inicial de la herramienta {nombre_herramienta}: ")
         print()
         cantidad_herramienta = int(cantidad_herramienta)
@@ -115,7 +115,7 @@ while ejecuccion:
         opcion_movstock = input("\n>> Opción elegida (1 o 2): ")
         while True:
             while not(opcion_movstock.isdigit()):
-                print("ERROR: El valor ingresado no es valido!")
+                print("ERROR: El valor ingresado no es válido!")
                 opcion_movstock = input("\n>> Opción elegida (1 o 2): ")
 
             if int(opcion_movstock) in [1, 2]:
@@ -128,7 +128,7 @@ while ejecuccion:
         salir = False
         while not(herramienta_buscada.title() in herramientas):
             print(f"ERROR: No se ha encontrado {herramienta_buscada} en el inventario")
-            herramienta_buscada = input("> Ingrese el nombre de la herramienta (Salir para volver al menu): ")
+            herramienta_buscada = input("> Ingrese el nombre de la herramienta (Salir para volver al menú): ")
 
             if herramienta_buscada.title() == "Salir":
                 salir = True
@@ -147,24 +147,24 @@ while ejecuccion:
         
         cantidad_herramienta_add = input(f">> Ingrese la cantidad de {herramienta_buscada}: ")
         while not(cantidad_herramienta_add.isdigit()):
-            print("ERROR: El valor ingresado no es valido!")
+            print("ERROR: El valor ingresado no es válido!")
             cantidad_herramienta_add = input(f" > Indique la cantidad de {herramienta_buscada}: ")
         cantidad_herramienta_add = int(cantidad_herramienta_add)
 
         print()
         if opcion_movstock == 1 and existencias[indice_ext] < cantidad_herramienta_add:
-            print(f"Usted quiere resta {cantidad_herramienta_add} unidades de {herramienta_buscada}, pero solo hay {existencias[indice_ext]}!")
+            print(f"Estan intentando restar {cantidad_herramienta_add} unidades de {herramienta_buscada}, pero solo hay {existencias[indice_ext]}!")
             print(f"Si continua con esta accion, se restan solo {existencias[indice_ext]} unidades a las existencias de {herramienta_buscada}")
             respuesta = input("¿Desea continuar con esta acción? (Si / No) : ")
             
             while not(respuesta.lower() in ["si", "no"]):
-                print("ERROR: El valor ingresado no es valido!")
+                print("ERROR: El valor ingresado no es válido!")
                 respuesta = input("¿Desea continuar con esta acción? (Si / No) : ")
                 
             if respuesta.lower() == "si":
                 cantidad_herramienta_add = existencias[indice_ext]
             else:
-                input("Modificación cancelada! Presione una tecla para volver al menu...")
+                input("Modificación cancelada! Presione una tecla para volver al menú...")
                 continue
         
         if opcion_movstock == 1:
@@ -200,7 +200,7 @@ while ejecuccion:
         salir = False
         while not(herramienta_buscada.title() in herramientas):
             print(f"\nERROR: No se ha encontrado {herramienta_buscada} en el inventario")
-            herramienta_buscada = input("> Ingrese el nombre de la herramienta (Salir para volver al menu): ")
+            herramienta_buscada = input("> Ingrese el nombre de la herramienta (Salir para volver al menú): ")
             if herramienta_buscada.title() == "Salir":
                 salir = True
                 input("Sera redigirido al menú princiapl. Presione cualquier tecla para continuar...")
@@ -245,7 +245,7 @@ while ejecuccion:
 
 
     elif opcion_elegida == 5:
-        print("Detalle del herramientas SIN stock".center(120, "."))
+        print("Reporte de herramientas sin stock".center(120, "."))
         aj = 30
         hay_vacios = False
         print("Nombre".center(aj, " ") , end= " ")
